@@ -5,7 +5,7 @@ Esse readme esclacerá como foi utilizado os padrões de projeto na etapa Interd
 # Padrão de Projeto State
 O padrão de projeto State é um padrão comportamental que permite que um objeto altere seu comportamento quando seu estado interno é alterado. Ele permite a alteração do comportamento de um objeto sem alterar sua classe, tornando-o mais flexível e fácil de entender.
 
-##Diagrama de Classes 
+## Diagrama de Classes 
 ![colegiado-escolar-State](https://github.com/samueldemorais/DesignPatternsColegiallis/assets/93936945/c9d2dd54-58c9-46b6-a721-fd15dacb3c90)
 
 ## Aplicação do Padrão State no Código
