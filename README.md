@@ -33,7 +33,7 @@ No ProcessoService, a mudança de estado é realizada em diferentes métodos, co
 # Padrão de Projeto Proxy
 O padrão Proxy é um padrão estrutural que permite a criação de um objeto intermediário que controla o acesso a outro objeto. Ele atua como um substituto ou representante de outro objeto para controlar o acesso a ele.
 
-#Diagrama de Classes
+## Diagrama de Classes
 ![sistemacolegiado-Proxy](https://github.com/samueldemorais/DesignPatternsColegiallis/assets/93936945/d48304c4-b93e-4c93-adf0-94929473cc88)
 
 ## Aplicação do Padrão Proxy no Código
