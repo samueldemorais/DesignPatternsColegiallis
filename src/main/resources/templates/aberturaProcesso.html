@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Processo</title>
+</head>
+<body>
+<h1>Cadastro de Processo</h1>
+<form th:action="@{/processo/cadastrar}" th:object="${processo}" method="post">
+    <label for="data">Data:</label>
+    <input type="date" id="data" th:field="*{data}" required><br>
+
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" th:field="*{titulo}" required><br>
+
+    <label for="requerimento">Requerimento:</label>
+    <textarea id="requerimento" th:field="*{requerimento}" required></textarea><br>
+
+    <input type="submit" value="Cadastrar">
+</form>
+</body>
+</html>

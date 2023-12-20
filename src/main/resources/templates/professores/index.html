@@ -1,0 +1,100 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layouts :: head('Lista das Professores')}"></head>
+<body>
+<header th:replace="~{layouts :: header('Listagem de Professores')}"></header>
+
+<div class="container mt-4 mb-5">
+    <div class="row">
+        <div role="alert" class="alert d-flex align-items-center alert-dismissible fade show" th:if="${message ne null}" th:classappend="${error ? 'alert-danger' : 'alert-success'}">
+            <i class="me-2" th:classappend="${error ? 'fa-solid fa-circle-xmark' : 'fa-solid fa-circle-check'}"></i>
+            <div th:text="${message}"></div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Matrícula</th>
+                    <th scope="col">Coordenador</th>
+                    <th scope="col">Colegiado</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="professor : ${professores}">
+                    <th class="col-1" scope="row" th:text="${professor.getId()}">ID</th>
+                    <td class="col-3" th:text="${professor.nome}">Nome do Aluno</td>
+                    <td class="col-3" th:text="${professor.fone}">Telefone</td>
+                    <td class="col-3" th:text="${professor.matricula.toString()}">Matrícula</td>
+                    <td class="col-1" th:text="${professor.coordenador.toString() == 'true' ? 'Sim' : 'Não'}">Coordenador</td>
+                    <td class="col-3" th:if="${professor.colegiado != null}" th:text="${professor.colegiado.curso}">Colegiado</td>
+                    <td class="col-3" th:unless="${professor.colegiado != null}"></td>
+
+                    <td class="col-1">
+                        <a class="btn btn-outline-warning" th:href="@{/professores/{value}/edit(value = ${professor.id})}"><i class="fa-solid fa-pen"></i></a>
+                    </td>
+
+                    <td class="col-1" th:if="${professor.coordenador}">
+                        <a class="btn btn-outline-info" th:href="@{/professores/{id}/atribuir(id = ${professor.id})}">
+                            <i class="fa-solid fa-gear fa-spin-pulse"></i>
+                        </a>
+                    </td>
+                    <td class="col-1" th:unless="${professor.coordenador}"></td>
+
+                    <td class="col-1" th:if="${professor.colegiado != null}">
+                        <a class="btn btn-outline-info" th:href="@{/reunioes/{id}/listreuniaocolegiado(id=${professor.id})}">
+                            <i class="fa-solid fa-list"></i>
+                        </a>
+                    </td>
+
+                    <td class="col-1" th:if="${professor.processos != null and professor.processos.size() > 0}">
+                        <a class="btn btn-outline-info" th:href="@{/processos/{id}/listarprocessosdoprofessor(id=${professor.id})}">
+                            <i class="fa-sharp fa-solid fa-gavel fa-shake"></i>
+                        </a>
+                    </td>
+
+
+                    <td class="col-1">
+                        <a class="btn btn-outline-danger" data-bs-toggle="modal" th:attr="data-bs-target='#modal-warning'+${professor.id}"><i class="fa-solid fa-trash"></i></a>
+                        <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" th:id="modal-warning+${professor.id}" >
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Remover Professor</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Tem certeza que deseja remover esse professor?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <a class="btn btn-danger" th:href="@{/professores/{value}/delete(value = ${professor.id})}"><i class="fa-solid fa-trash"></i>&nbsp;Remover</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--            <div th:replace="~{/fragments/paging::paginator('institutions', ${navPage})}"></div>-->
+
+        </div>
+    </div>
+    <div>
+        <a type="button" class="btn btn-success" href="/professores/new"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Novo Professor</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+</html>
