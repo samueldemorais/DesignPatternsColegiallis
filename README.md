@@ -37,7 +37,7 @@ O padrão Proxy é um padrão estrutural que permite a criação de um objeto in
 ![sistemacolegiado-Proxy](https://github.com/samueldemorais/DesignPatternsColegiallis/assets/93936945/d48304c4-b93e-4c93-adf0-94929473cc88)
 
 ## Aplicação do Padrão Proxy no Código
-No código fornecido, o padrão Proxy é aplicado para controlar o acesso dos professores aos processos designados para eles. Duas classes e uma interface foi desenvolvida para esta implementação: ProcessosConsulta e ProxyConsultaProcessosProfessor.
+No código, o padrão Proxy é aplicado para controlar o acesso dos professores aos processos designados para eles. Duas classes e uma interface foi desenvolvida para esta implementação: ProcessosConsulta e ProxyConsultaProcessosProfessor.
 
 public interface ConsultaProcessos {
     List<Processo> consultarProcessos();
@@ -73,7 +73,7 @@ O padrão de projeto Mediator é um padrão comportamental que facilita a comuni
 
 
 ## Aplicação do Padrão Mediator no Código
-No código fornecido, o padrão Mediator é utilizado para gerenciar a distribuição de processos aos professores por meio da interface MediatorProcesso e da implementação concreta Coordenador.
+No código, o padrão Mediator é utilizado para gerenciar a distribuição de processos aos professores por meio da interface MediatorProcesso e da implementação concreta Coordenador.
 
 public interface MediatorProcesso {
     void atribuirProcesso(Integer idProcesso, Integer idProfessor);
